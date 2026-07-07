@@ -57,7 +57,6 @@ export const projectSchema = z.object({
   body: z.object({
     name: z.string().min(2).max(80),
     description: z.string().max(500).optional().default(''),
-    color: z.string().regex(/^#[0-9a-f]{6}$/i).optional().default('#2563eb'),
     assignedMembers: z.array(id).optional().default([])
   })
 });

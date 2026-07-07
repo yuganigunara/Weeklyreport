@@ -43,16 +43,29 @@ export default function DashboardPage() {
       <header className="page-header">
         <div>
           <h1>Team Dashboard</h1>
-          <p>Analyze submissions, blockers, workload, and recent activity across the team.</p>
+          <p>One screen for status, workload, and team pulse.</p>
+        </div>
+        <div className="header-chip-row">
+          <div className="header-chip">
+            <span>Members</span>
+            <strong>{users.filter((user) => user.role === 'member').length}</strong>
+          </div>
+          <div className="header-chip">
+            <span>Projects</span>
+            <strong>{projects.length}</strong>
+          </div>
         </div>
       </header>
 
-      <section className="filters">
+      <section className="panel smart-filter-panel">
+        <div className="panel-title">Quick filters</div>
+        <div className="filters dashboard-filters">
         <label>Week<input type="date" value={filters.weekStart} onChange={(event) => update('weekStart', event.target.value)} /></label>
         <label>From<input type="date" value={filters.from} onChange={(event) => update('from', event.target.value)} /></label>
         <label>To<input type="date" value={filters.to} onChange={(event) => update('to', event.target.value)} /></label>
-        <label>Member<select value={filters.member} onChange={(event) => update('member', event.target.value)}><option value="">All</option>{users.filter((user) => user.role === 'member').map((user) => <option key={user.id} value={user.id}>{user.name}</option>)}</select></label>
-        <label>Project<select value={filters.project} onChange={(event) => update('project', event.target.value)}><option value="">All</option>{projects.map((project) => <option key={project._id} value={project._id}>{project.name}</option>)}</select></label>
+        <label>Member<select value={filters.member} onChange={(event) => update('member', event.target.value)}><option value="">All members</option>{users.filter((user) => user.role === 'member').map((user) => <option key={user.id} value={user.id}>{user.name}</option>)}</select></label>
+        <label>Project<select value={filters.project} onChange={(event) => update('project', event.target.value)}><option value="">All projects</option>{projects.map((project) => <option key={project._id} value={project._id}>{project.name}</option>)}</select></label>
+        </div>
       </section>
 
       <section className="metrics-grid">
@@ -105,6 +118,7 @@ export default function DashboardPage() {
         </div>
         <div className="panel activity-list">
           <div className="panel-title">Recent reports</div>
+          {!data.activity.length && <div className="empty-state">No recent submissions match the selected filters.</div>}
           {data.activity.map((report) => (
             <article key={report._id} className="activity-item">
               <strong>{report.user?.name}</strong>

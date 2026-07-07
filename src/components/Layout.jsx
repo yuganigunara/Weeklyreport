@@ -1,4 +1,4 @@
-import { BarChart3, CalendarCheck2, FolderKanban, LogOut, NotebookTabs, ShieldCheck } from 'lucide-react';
+import { BarChart3, CalendarDays, FolderKanban, LogOut, NotebookTabs, ShieldCheck } from 'lucide-react';
 import { NavLink, Outlet } from 'react-router-dom';
 import AssistantWidget from './AssistantWidget.jsx';
 import { useAuth } from '../state/AuthContext.jsx';
@@ -12,10 +12,12 @@ export default function Layout() {
       <aside className="sidebar">
         <div className="sidebar-top">
           <div className="brand-row">
-            <div className="brand-icon"><CalendarCheck2 size={22} /></div>
-            <div>
+            <div className="brand-mark" aria-hidden="true">
+              <CalendarDays size={17} />
+            </div>
+            <div className="brand-block">
               <div className="brand">WeeklyFlow</div>
-              <span className="brand-subtitle">Team reporting hub</span>
+              <span className="brand-subtitle">Weekly reports, simplified</span>
             </div>
           </div>
           <div className="identity">

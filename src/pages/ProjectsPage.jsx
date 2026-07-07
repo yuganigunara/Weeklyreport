@@ -2,7 +2,7 @@ import { Pencil, Plus, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { api, getErrorMessage } from '../api/client.js';
 
-const emptyProject = { name: '', description: '', color: '#2563eb', assignedMembers: [] };
+const emptyProject = { name: '', description: '', assignedMembers: [] };
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState([]);
@@ -53,7 +53,6 @@ export default function ProjectsPage() {
     setForm({
       name: project.name,
       description: project.description || '',
-      color: project.color || '#2563eb',
       assignedMembers: (project.assignedMembers || []).map((member) => member._id)
     });
   }
@@ -68,15 +67,15 @@ export default function ProjectsPage() {
       <header className="page-header">
         <div>
           <h1>Projects & Categories</h1>
-          <p>Manage reusable project tags and assign relevant team members.</p>
+          <p>Manage reusable project tags and assign relevant team members with a simple, friendly workflow.</p>
         </div>
       </header>
 
       <section className="panel">
         <div className="panel-title"><Plus size={18} /> {editing ? 'Edit project' : 'Add project'}</div>
+        <p className="form-hint">Projects help keep weekly reports consistent, searchable, and easy to compare on the manager dashboard.</p>
         <form onSubmit={save} className="project-form">
           <label>Name<input value={form.name} onChange={(event) => update('name', event.target.value)} required /></label>
-          <label>Color<input type="color" value={form.color} onChange={(event) => update('color', event.target.value)} /></label>
           <label className="wide">Description<textarea value={form.description} onChange={(event) => update('description', event.target.value)} /></label>
           <div className="wide member-picker">
             {users.map((user) => (
@@ -95,9 +94,9 @@ export default function ProjectsPage() {
       </section>
 
       <section className="project-grid">
+        {!projects.length && <div className="empty-state">No projects yet. Add your first category so team members can tag reports consistently.</div>}
         {projects.map((project) => (
           <article className="project-card" key={project._id}>
-            <div className="project-color" style={{ background: project.color }} />
             <div>
               <h2>{project.name}</h2>
               <p>{project.description}</p>

@@ -88,6 +88,7 @@ export default function ReportsPage() {
 
       <section className="panel">
         <div className="panel-title"><Plus size={18} /> {editing ? 'Edit report' : 'New report'}</div>
+        <p className="form-hint">The report structure is fixed so every team member submits the same fields in the same order.</p>
         <form className="report-form" onSubmit={save}>
           <label>Week start<input type="date" value={form.weekStart} onChange={(event) => update('weekStart', event.target.value)} required /></label>
           <label>Week end<input type="date" value={form.weekEnd} onChange={(event) => update('weekEnd', event.target.value)} required /></label>
@@ -106,6 +107,12 @@ export default function ReportsPage() {
       </section>
 
       <section className="history">
+        {!reports.length && (
+          <div className="empty-state">
+            <strong>No reports yet</strong>
+            Create your first weekly report above. Saved drafts will appear here by week, and submitted reports become read-only.
+          </div>
+        )}
         {Object.entries(grouped).map(([week, items]) => (
           <div className="week-group" key={week}>
             <h2>{format(new Date(week), 'MMM d, yyyy')}</h2>

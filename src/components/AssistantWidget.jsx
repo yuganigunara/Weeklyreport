@@ -1,4 +1,4 @@
-import { Bot, MessageSquareText, Send, Sparkles } from 'lucide-react';
+import { MessageSquareText, Send, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { api } from '../api/client.js';
 
@@ -34,10 +34,12 @@ export default function AssistantWidget() {
       {open && (
         <section className="assistant-panel">
           <header className="assistant-header">
-            <div className="assistant-header-icon"><Sparkles size={18} /></div>
+            <div className="assistant-header-icon" aria-hidden="true">
+              <Sparkles size={14} />
+            </div>
             <div>
-              <strong>Team Assistant</strong>
-              <span>Report summary helper</span>
+              <strong>Assistant</strong>
+              <span>Private team summary</span>
             </div>
           </header>
           <div className="assistant-suggestions">
@@ -56,7 +58,7 @@ export default function AssistantWidget() {
         </section>
       )}
       <button className="assistant-toggle" onClick={() => setOpen((value) => !value)} aria-label="Assistant">
-        <Bot size={22} />
+        <Sparkles size={14} />
       </button>
     </div>
   );

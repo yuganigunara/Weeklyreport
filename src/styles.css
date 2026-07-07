@@ -1,7 +1,11 @@
 :root {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #0f2742;
-  background: #eef7ff;
+  color: #10263d;
+  background:
+    radial-gradient(circle at top left, rgba(186, 230, 253, 0.55), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(219, 234, 254, 0.7), transparent 24%),
+    #eef7ff;
+  --blue-25: #f8fcff;
   --blue-50: #eff8ff;
   --blue-100: #dff1ff;
   --blue-200: #b9e4ff;
@@ -9,12 +13,13 @@
   --blue-500: #0ea5e9;
   --blue-600: #0284c7;
   --blue-700: #0369a1;
+  --blue-800: #075985;
   --green-500: #10b981;
   --amber-400: #f59e0b;
-  --ink: #0f2742;
-  --muted: #5d7288;
+  --ink: #10263d;
+  --muted: #5c728a;
   --line: #cfe6f8;
-  --panel: #ffffff;
+  --panel: rgba(255, 255, 255, 0.96);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -25,6 +30,8 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
 }
 
 button,
@@ -44,20 +51,21 @@ button {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: linear-gradient(135deg, #dff1ff, #f8fcff 52%, #ffffff);
+  background:
+    radial-gradient(circle at top left, rgba(125, 211, 252, 0.45), transparent 30%),
+    linear-gradient(135deg, #dff1ff, #f8fcff 52%, #ffffff);
 }
 
 .auth-panel {
-  width: min(440px, 100%);
-  background: var(--panel);
+  width: min(460px, 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 252, 255, 0.98));
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 30px;
+  padding: 32px;
   box-shadow: 0 24px 60px rgba(2, 132, 199, 0.14);
 }
 
-.auth-mark,
-.assistant-toggle {
+.auth-mark {
   width: 46px;
   height: 46px;
   display: grid;
@@ -67,10 +75,30 @@ button {
   color: #ffffff;
 }
 
+.assistant-toggle {
+  min-width: 52px;
+  height: 40px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--blue-700);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 24px rgba(14, 165, 233, 0.08);
+}
+
+.assistant-toggle span {
+  margin-left: 6px;
+}
+
 .auth-panel h1,
 .page-header h1 {
   margin: 16px 0 8px;
-  font-size: 32px;
+  font-size: 34px;
   letter-spacing: 0;
 }
 
@@ -78,6 +106,7 @@ button {
 .page-header p {
   margin: 0;
   color: var(--muted);
+  line-height: 1.6;
 }
 
 .segmented {
@@ -88,6 +117,7 @@ button {
   padding: 4px;
   background: var(--blue-50);
   border-radius: 8px;
+  border: 1px solid var(--line);
 }
 
 .segmented button {
@@ -95,6 +125,8 @@ button {
   background: transparent;
   padding: 10px;
   border-radius: 6px;
+  font-weight: 800;
+  color: var(--muted);
 }
 
 .segmented .active {
@@ -217,6 +249,12 @@ textarea {
   padding: 0;
   background: var(--blue-50);
   color: var(--blue-700);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.icon-button:hover {
+  background: var(--blue-100);
+  transform: translateY(-1px);
 }
 
 .icon-button:disabled {
@@ -255,8 +293,8 @@ textarea {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 24px;
-  padding: 20px;
+  gap: 22px;
+  padding: 18px;
   background:
     linear-gradient(180deg, rgba(223, 241, 255, 0.96), rgba(255, 255, 255, 0.98) 36%),
     #ffffff;
@@ -266,7 +304,14 @@ textarea {
 
 .sidebar-top {
   display: grid;
-  gap: 18px;
+  gap: 16px;
+}
+
+.brand-block {
+  display: grid;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
 }
 
 .brand-row {
@@ -275,36 +320,36 @@ textarea {
   gap: 12px;
 }
 
-.brand-icon {
-  width: 46px;
-  height: 46px;
+.brand-mark {
+  width: 38px;
+  height: 38px;
   display: grid;
   place-items: center;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--blue-500), var(--blue-700));
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--blue-700), var(--blue-500));
   color: #ffffff;
-  box-shadow: 0 14px 26px rgba(14, 165, 233, 0.22);
+  box-shadow: 0 10px 22px rgba(14, 165, 233, 0.16);
 }
 
 .brand {
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 900;
   color: var(--blue-700);
+  letter-spacing: 0.02em;
 }
 
 .brand-subtitle {
   display: block;
-  margin-top: 2px;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .identity {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 12px 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.78);
@@ -343,7 +388,7 @@ textarea {
 
 .nav {
   display: grid;
-  gap: 7px;
+  gap: 8px;
 }
 
 .nav-section {
@@ -360,8 +405,8 @@ textarea {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-height: 46px;
-  padding: 0 12px;
+  min-height: 48px;
+  padding: 0 14px;
   color: #24435f;
   text-decoration: none;
   border-radius: 8px;
@@ -393,6 +438,10 @@ textarea {
   background: var(--blue-500);
 }
 
+.nav a span {
+  font-weight: 800;
+}
+
 .sidebar-footer {
   display: grid;
   gap: 10px;
@@ -415,15 +464,15 @@ textarea {
 
 .content {
   min-width: 0;
-  padding: 28px;
+  padding: 24px;
   background:
-    radial-gradient(circle at top right, rgba(186, 230, 253, 0.6), transparent 32%),
+    radial-gradient(circle at top right, rgba(186, 230, 253, 0.3), transparent 28%),
     #f6fbff;
 }
 
 .page {
   display: grid;
-  gap: 22px;
+  gap: 18px;
 }
 
 .page-header {
@@ -434,8 +483,37 @@ textarea {
   padding: 18px 20px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: linear-gradient(135deg, #ffffff, var(--blue-50));
+  background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 14px 34px rgba(14, 165, 233, 0.08);
+}
+
+.header-chip-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.header-chip {
+  min-width: 90px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+  display: grid;
+  gap: 4px;
+}
+
+.header-chip span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.header-chip strong {
+  color: var(--blue-700);
+  font-size: 18px;
 }
 
 .panel,
@@ -458,6 +536,8 @@ textarea {
   gap: 8px;
   margin-bottom: 16px;
   font-weight: 900;
+  color: var(--blue-800);
+  letter-spacing: 0.01em;
 }
 
 .form-actions {
@@ -533,6 +613,14 @@ textarea {
   gap: 14px;
 }
 
+.smart-filter-panel {
+  padding-bottom: 18px;
+}
+
+.smart-filter-panel .filters {
+  margin-top: 6px;
+}
+
 .filters {
   grid-template-columns: repeat(5, minmax(0, 1fr));
   align-items: end;
@@ -540,22 +628,27 @@ textarea {
 
 .metrics-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .metric {
-  padding: 18px;
+  padding: 16px;
   display: grid;
   gap: 8px;
-  background: linear-gradient(180deg, #ffffff, #f8fcff);
+  background: rgba(255, 255, 255, 0.98);
 }
 
 .metric span {
   color: var(--muted);
   font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11px;
 }
 
 .metric strong {
-  font-size: 30px;
+  font-size: 28px;
+  letter-spacing: 0;
 }
 
 .metric.blue strong {
@@ -572,10 +665,16 @@ textarea {
 
 .charts-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .chart-panel {
   min-width: 0;
+}
+
+.chart-panel .form-hint {
+  margin-top: -6px;
+  margin-bottom: 12px;
 }
 
 .activity-list {
@@ -598,18 +697,17 @@ textarea {
 
 .project-card {
   display: grid;
-  grid-template-columns: 12px 1fr auto;
-  gap: 14px;
-}
-
-.project-color {
-  width: 12px;
-  border-radius: 999px;
+  gap: 10px;
+  align-items: start;
 }
 
 .project-card h2 {
   margin: 0;
   font-size: 18px;
+}
+
+.project-card .card-actions {
+  margin-top: 0;
 }
 
 .member-picker {
@@ -622,10 +720,17 @@ textarea {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 10px;
+  padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
   font-weight: 700;
+  background: #ffffff;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+
+.check-row:hover {
+  border-color: var(--blue-200);
+  background: var(--blue-25);
 }
 
 .check-row input {
@@ -644,10 +749,10 @@ textarea {
 
 .assistant-panel {
   width: min(430px, calc(100vw - 44px));
-  background: linear-gradient(180deg, #ffffff, #f7fcff);
+  background: rgba(255, 255, 255, 0.98);
   border: 1px solid var(--line);
   border-radius: 8px;
-  padding: 16px;
+  padding: 14px;
   box-shadow: 0 20px 55px rgba(2, 132, 199, 0.18);
 }
 
@@ -661,8 +766,8 @@ textarea {
 }
 
 .assistant-header-icon {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   display: grid;
   place-items: center;
   border-radius: 8px;
@@ -685,7 +790,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .assistant-suggestions button {
@@ -709,7 +814,7 @@ textarea {
   gap: 10px;
   color: #24435f;
   line-height: 1.5;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -735,6 +840,35 @@ textarea {
   cursor: not-allowed;
 }
 
+.error {
+  padding: 10px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 18px;
+  border: 1px dashed var(--blue-200);
+  border-radius: 8px;
+  background: var(--blue-25);
+  color: var(--muted);
+}
+
+.empty-state strong {
+  display: block;
+  color: var(--blue-700);
+  margin-bottom: 6px;
+}
+
+.form-hint {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
 @media (max-width: 980px) {
   .shell {
     grid-template-columns: 1fr;
@@ -743,6 +877,10 @@ textarea {
   .sidebar {
     position: static;
     height: auto;
+  }
+
+  .sidebar {
+    gap: 16px;
   }
 
   .sidebar-footer {
@@ -778,5 +916,18 @@ textarea {
 
   .sidebar-footer {
     grid-template-columns: 1fr;
+  }
+
+  .header-chip-row {
+    margin-top: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -32,10 +32,10 @@ export default function AuthPage() {
       <section className="auth-panel">
         <div className="auth-mark"><ClipboardCheck size={28} /></div>
         <h1>WeeklyFlow</h1>
-        <p>Structured weekly reports for teams that need clean visibility.</p>
+        <p>Structured weekly reports for teams that need clean visibility, quick submission, and manager-friendly review.</p>
         <div className="segmented">
-          <button className={mode === 'login' ? 'active' : ''} onClick={() => setMode('login')}>Login</button>
-          <button className={mode === 'register' ? 'active' : ''} onClick={() => setMode('register')}>Register</button>
+          <button type="button" className={mode === 'login' ? 'active' : ''} onClick={() => setMode('login')}>Login</button>
+          <button type="button" className={mode === 'register' ? 'active' : ''} onClick={() => setMode('register')}>Register</button>
         </div>
         <form onSubmit={submit} className="stack-form">
           {mode === 'register' && (
@@ -46,6 +46,7 @@ export default function AuthPage() {
           )}
           <label>Email<input type="email" value={form.email} onChange={(event) => update('email', event.target.value)} required /></label>
           <label>Password<input type="password" value={form.password} onChange={(event) => update('password', event.target.value)} required /></label>
+          <div className="form-hint">Use the manager account to access the dashboard and project controls.</div>
           {error && <div className="error">{error}</div>}
           <button className="primary-button">{mode === 'login' ? 'Login' : 'Create account'}</button>
         </form>
