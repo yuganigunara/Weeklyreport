@@ -13,7 +13,7 @@ export default function Layout() {
         <div className="sidebar-top">
           <div className="brand-row">
             <div className="brand-mark" aria-hidden="true">
-              <CalendarDays size={17} />
+              <CalendarDays size={15} />
             </div>
             <div className="brand-block">
               <div className="brand">WeeklyFlow</div>

@@ -30,6 +30,9 @@ export default function ReportsPage() {
     }, {});
   }, [reports]);
 
+  const draftCount = reports.filter((report) => report.status !== 'submitted').length;
+  const submittedCount = reports.filter((report) => report.status === 'submitted').length;
+
   async function load() {
     const [reportRes, projectRes] = await Promise.all([api.get('/reports'), api.get('/projects')]);
     setReports(reportRes.data.reports);
@@ -84,6 +87,16 @@ export default function ReportsPage() {
           <h1>My Weekly Reports</h1>
           <p>Create, edit, submit, and review your fixed-format weekly history.</p>
         </div>
+        <div className="header-chip-row">
+          <div className="header-chip">
+            <span>Drafts</span>
+            <strong>{draftCount}</strong>
+          </div>
+          <div className="header-chip">
+            <span>Submitted</span>
+            <strong>{submittedCount}</strong>
+          </div>
+        </div>
       </header>
 
       <section className="panel">
@@ -124,6 +137,7 @@ export default function ReportsPage() {
                     <strong>{report.project?.name}</strong>
                   </div>
                   <p>{report.tasksCompleted}</p>
+                  <span className="report-meta">{report.weekStart.slice(0, 10)} to {report.weekEnd.slice(0, 10)}</span>
                   <div className="card-actions">
                     <button className="icon-button" onClick={() => edit(report)} disabled={report.status === 'submitted'} title="Edit"><Pencil size={16} /></button>
                     {report.status !== 'submitted' && <button className="primary-button compact" onClick={() => submitReport(report._id)}><CheckCircle2 size={16} /> Submit</button>}

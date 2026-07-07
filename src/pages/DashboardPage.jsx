@@ -75,6 +75,24 @@ export default function DashboardPage() {
         <MetricCard label="Pending" value={data.metrics.pendingMembers} />
       </section>
 
+      <section className="panel">
+        <div className="panel-title">Current week snapshot</div>
+        <div className="dashboard-summary">
+          <div>
+            <strong>{data.metrics.submittedThisWeek}</strong>
+            <span>reports submitted</span>
+          </div>
+          <div>
+            <strong>{data.metrics.pendingMembers}</strong>
+            <span>members still pending</span>
+          </div>
+          <div>
+            <strong>{data.metrics.openBlockers}</strong>
+            <span>open blockers to review</span>
+          </div>
+        </div>
+      </section>
+
       <section className="charts-grid">
         <div className="panel chart-panel">
           <div className="panel-title">Tasks completed trend</div>
