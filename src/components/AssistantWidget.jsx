@@ -5,13 +5,15 @@ import { api } from '../api/client.js';
 const suggestions = [
   'Summarize this week',
   'Show current blockers',
-  'What is the recent focus?'
+  'What did the team focus on?',
+  'How many reports are pending?'
 ];
 
 export default function AssistantWidget() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [answer, setAnswer] = useState('Ask about recent reports, blockers, or team activity. The assistant summarizes only the reports your role is allowed to view.');
+  const [mode, setMode] = useState('local-summary');
   const [loading, setLoading] = useState(false);
 
   async function ask(event) {
@@ -21,8 +23,10 @@ export default function AssistantWidget() {
     try {
       const res = await api.post('/assistant/chat', { message });
       setAnswer(res.data.answer);
+      setMode(res.data.mode || 'local-summary');
       setMessage('');
     } catch (_error) {
+      setMode('offline');
       setAnswer('Assistant is available, but this request could not be completed. Please check that the API server is running.');
     } finally {
       setLoading(false);
@@ -39,7 +43,7 @@ export default function AssistantWidget() {
             </div>
             <div>
               <strong>Assistant</strong>
-              <span>Private team summary</span>
+              <span className="assistant-mode">{mode === 'llm-ready' ? 'LLM connected' : mode === 'offline' ? 'Offline' : 'Private team summary'}</span>
             </div>
           </header>
           <div className="assistant-suggestions">
@@ -52,7 +56,7 @@ export default function AssistantWidget() {
             <span>{loading ? 'Reading the latest report data...' : answer}</span>
           </div>
           <form onSubmit={ask} className="assistant-form">
-            <input value={message} onChange={(event) => setMessage(event.target.value)} placeholder="Ask about team reports" />
+            <input value={message} onChange={(event) => setMessage(event.target.value)} placeholder="Ask about reports, blockers, or team focus" />
             <button aria-label="Send" disabled={loading}><Send size={16} /></button>
           </form>
         </section>

@@ -36,6 +36,8 @@ export default function DashboardPage() {
     setFilters((current) => ({ ...current, [field]: value }));
   }
 
+  const activeFilters = Object.entries(filters).filter(([, value]) => Boolean(value));
+
   if (!data) return <div className="page">Loading dashboard...</div>;
 
   return (
@@ -65,6 +67,14 @@ export default function DashboardPage() {
         <label>To<input type="date" value={filters.to} onChange={(event) => update('to', event.target.value)} /></label>
         <label>Member<select value={filters.member} onChange={(event) => update('member', event.target.value)}><option value="">All members</option>{users.filter((user) => user.role === 'member').map((user) => <option key={user.id} value={user.id}>{user.name}</option>)}</select></label>
         <label>Project<select value={filters.project} onChange={(event) => update('project', event.target.value)}><option value="">All projects</option>{projects.map((project) => <option key={project._id} value={project._id}>{project.name}</option>)}</select></label>
+        </div>
+        <div className="filter-summary">
+          <span>{activeFilters.length ? `${activeFilters.length} filter${activeFilters.length > 1 ? 's' : ''} active` : 'No filters active'}</span>
+          <div className="filter-summary-chips">
+            {activeFilters.map(([key, value]) => (
+              <span key={key} className="summary-chip">{key}: {value}</span>
+            ))}
+          </div>
         </div>
       </section>
 

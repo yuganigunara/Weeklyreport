@@ -110,6 +110,18 @@ button {
   line-height: 1.6;
 }
 
+.auth-note {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--blue-100);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f4fbff, #e3f0ff);
+  color: var(--blue-800);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
 .segmented {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -486,7 +498,7 @@ textarea {
 
 .page {
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .page-header {
@@ -496,7 +508,7 @@ textarea {
   align-items: flex-end;
   padding: 12px 14px;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 14px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(235, 245, 255, 0.98));
   box-shadow: 0 10px 24px rgba(18, 67, 111, 0.05);
 }
@@ -536,12 +548,12 @@ textarea {
 .project-card {
   background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 14px;
   box-shadow: 0 10px 24px rgba(18, 67, 111, 0.05);
 }
 
 .panel {
-  padding: 12px;
+  padding: 14px;
 }
 
 .panel-title {
@@ -580,7 +592,7 @@ textarea {
 
 .report-card,
 .project-card {
-  padding: 13px;
+  padding: 14px;
 }
 
 .report-card p,
@@ -642,11 +654,43 @@ textarea {
 
 .metrics-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 7px;
+  gap: 10px;
+}
+
+.filter-summary {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #f6fbff, #e7f2ff);
+  color: var(--blue-800);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filter-summary-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.summary-chip {
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid var(--blue-100);
+  color: var(--blue-700);
+  font-size: 11px;
+  font-weight: 800;
 }
 
 .metric {
-  padding: 11px;
+  padding: 14px;
   display: grid;
   gap: 8px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(235, 244, 255, 0.96));
@@ -690,6 +734,10 @@ textarea {
 
 .chart-panel {
   min-width: 0;
+}
+
+.chart-panel .panel-title {
+  margin-bottom: 12px;
 }
 
 .chart-panel .form-hint {
@@ -762,7 +810,7 @@ textarea {
 }
 
 .project-overview .panel {
-  padding: 12px;
+  padding: 14px;
 }
 
 .project-metrics {
@@ -853,9 +901,9 @@ textarea {
 }
 
 .coverage-row {
-  padding: 10px 12px;
+  padding: 11px 12px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   background: linear-gradient(180deg, #ffffff, #edf7ff);
 }
 
@@ -897,9 +945,9 @@ textarea {
 }
 
 .dashboard-summary div {
-  padding: 12px;
+  padding: 14px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   background: linear-gradient(180deg, #ffffff, #eaf4ff);
   display: grid;
   gap: 4px;
@@ -995,9 +1043,9 @@ textarea {
 }
 
 .assignment-row {
-  padding: 10px 12px;
+  padding: 11px 12px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   background: linear-gradient(180deg, #ffffff, #edf7ff);
 }
 
@@ -1020,8 +1068,8 @@ textarea {
 
 .assistant {
   position: fixed;
-  right: 14px;
-  bottom: 14px;
+  right: 16px;
+  bottom: 16px;
   display: grid;
   gap: 10px;
   justify-items: end;
@@ -1029,11 +1077,11 @@ textarea {
 }
 
 .assistant-panel {
-  width: min(430px, calc(100vw - 44px));
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(234, 244, 255, 0.98));
+  width: min(440px, calc(100vw - 44px));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(232, 243, 255, 0.99));
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 11px;
+  border-radius: 14px;
+  padding: 12px;
   box-shadow: 0 12px 30px rgba(18, 67, 111, 0.08);
 }
 
@@ -1067,6 +1115,19 @@ textarea {
   font-weight: 800;
 }
 
+.assistant-header .assistant-mode {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 3px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--blue-100);
+  background: linear-gradient(180deg, #f7fbff, #e6f3ff);
+  color: var(--blue-700);
+  font-size: 11px;
+  font-weight: 800;
+}
+
 .assistant-suggestions {
   display: flex;
   flex-wrap: wrap;
@@ -1077,7 +1138,7 @@ textarea {
 .assistant-suggestions button {
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff, #edf7ff);
   color: var(--blue-700);
   padding: 7px 10px;
   font-size: 12px;
@@ -1085,7 +1146,7 @@ textarea {
 }
 
 .assistant-suggestions button:hover {
-  background: var(--blue-50);
+  background: linear-gradient(180deg, #edf7ff, #dff0ff);
   border-color: var(--blue-200);
 }
 
@@ -1098,9 +1159,13 @@ textarea {
   margin-bottom: 10px;
   padding: 12px;
   border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #ffffff;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #edf7ff);
   white-space: pre-line;
+}
+
+.assistant-answer span {
+  font-size: 13px;
 }
 
 .assistant-form {
@@ -1111,14 +1176,23 @@ textarea {
 
 .assistant-form button {
   border: 0;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--blue-500), var(--blue-700));
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue-700), var(--blue-900));
   color: #ffffff;
 }
 
 .assistant-form button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
+}
+
+.assistant-toggle:hover {
+  background: linear-gradient(180deg, #ffffff, #e3f0ff);
+  border-color: var(--blue-200);
+}
+
+.assistant-panel input {
+  background: linear-gradient(180deg, #ffffff, #edf7ff);
 }
 
 .error {
@@ -1133,7 +1207,7 @@ textarea {
 .empty-state {
   padding: 18px;
   border: 1px dashed var(--blue-200);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--blue-25);
   color: var(--muted);
 }
