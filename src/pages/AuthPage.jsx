@@ -29,11 +29,20 @@ export default function AuthPage() {
 
   return (
     <main className="auth-page">
+      <section className="auth-visual" aria-hidden="true">
+        <div className="auth-image-card">
+          <img src="/auth-hero.png" alt="" className="auth-image" />
+          <div className="image-caption">
+            <strong>Weekly reporting workspace</strong>
+            <span>Clean, friendly, and easy to scan.</span>
+          </div>
+        </div>
+      </section>
+
       <section className="auth-panel">
         <div className="auth-mark"><ClipboardCheck size={28} /></div>
         <h1>WeeklyFlow</h1>
         <p>Structured weekly reports for teams that need clean visibility, quick submission, and manager-friendly review.</p>
-        <div className="auth-note">Light-blue workspace, simple sign-in, and fixed report structure for every team member.</div>
         <div className="segmented">
           <button type="button" className={mode === 'login' ? 'active' : ''} onClick={() => setMode('login')}>Login</button>
           <button type="button" className={mode === 'register' ? 'active' : ''} onClick={() => setMode('register')}>Register</button>
