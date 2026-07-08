@@ -50,13 +50,13 @@ export default function AuthPage() {
         <form onSubmit={submit} className="stack-form">
           {mode === 'register' && (
             <>
-              <label>Name<input value={form.name} onChange={(event) => update('name', event.target.value)} required /></label>
+              <label>Name<input value={form.name} onChange={(event) => update('name', event.target.value)} placeholder="Your full name" required /></label>
               <label>Role<select value={form.role} onChange={(event) => update('role', event.target.value)}><option value="member">Team Member</option><option value="manager">Manager</option></select></label>
             </>
           )}
-          <label>Email<input type="email" value={form.email} onChange={(event) => update('email', event.target.value)} required /></label>
-          <label>Password<input type="password" value={form.password} onChange={(event) => update('password', event.target.value)} required /></label>
-          <div className="form-hint">Use the manager account to access the dashboard and project controls.</div>
+          <label>Email<input type="email" value={form.email} onChange={(event) => update('email', event.target.value)} placeholder="name@company.com" required /></label>
+          <label>Password<input type="password" value={form.password} onChange={(event) => update('password', event.target.value)} placeholder="At least 8 characters" required /></label>
+          <div className="form-hint">Password must be 8 characters or more. Use the manager account to access the dashboard and project controls.</div>
           {error && <div className="error">{error}</div>}
           <button className="primary-button">{mode === 'login' ? 'Login' : 'Create account'}</button>
         </form>

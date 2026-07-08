@@ -6,5 +6,16 @@ export const api = axios.create({
 });
 
 export function getErrorMessage(error) {
-  return error.response?.data?.message || 'Something went wrong';
+  const data = error.response?.data;
+  if (data?.issues?.length) {
+    const detail = data.issues
+      .map((issue) => {
+        const field = issue.path ? `${issue.path}: ` : '';
+        return `${field}${issue.message}`;
+      })
+      .join(' | ');
+    return detail;
+  }
+
+  return data?.message || 'Something went wrong';
 }
