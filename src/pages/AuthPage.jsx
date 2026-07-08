@@ -56,7 +56,11 @@ export default function AuthPage() {
           )}
           <label>Email<input type="email" value={form.email} onChange={(event) => update('email', event.target.value)} placeholder="name@company.com" required /></label>
           <label>Password<input type="password" value={form.password} onChange={(event) => update('password', event.target.value)} placeholder="At least 8 characters" required /></label>
-          <div className="form-hint">Password must be 8 characters or more. Use the manager account to access the dashboard and project controls.</div>
+          {mode === 'register' ? (
+            <div className="form-hint">Password must be at least 8 characters. Use the manager account to access the dashboard and project controls.</div>
+          ) : (
+            <div className="form-hint">Use your email and password to sign in.</div>
+          )}
           {error && <div className="error">{error}</div>}
           <button className="primary-button">{mode === 'login' ? 'Login' : 'Create account'}</button>
         </form>

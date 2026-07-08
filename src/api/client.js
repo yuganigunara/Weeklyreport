@@ -8,13 +8,12 @@ export const api = axios.create({
 export function getErrorMessage(error) {
   const data = error.response?.data;
   if (data?.issues?.length) {
-    const detail = data.issues
+    return data.issues
       .map((issue) => {
         const field = issue.path ? `${issue.path}: ` : '';
         return `${field}${issue.message}`;
       })
-      .join(' | ');
-    return detail;
+      .join('. ');
   }
 
   return data?.message || 'Something went wrong';
